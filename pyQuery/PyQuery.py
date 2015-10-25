@@ -1,4 +1,6 @@
-import Exceptions
+from Exceptions import SequenceError
+from Exceptions import LookUpError
+
 
 class PyQuery:
     def __init__(self, data_set):
@@ -45,7 +47,7 @@ class PyQuery:
         if item is not None:
             return item
 
-        raise Exceptions.LookUpError("Can not find the item.", item)
+        raise LookUpError("Can not find the item.", item)
 
     def last_or_default(self, predicate=lambda n: n):
         for item in self.get_from_predicates(False):
@@ -59,7 +61,7 @@ class PyQuery:
         if item is not None:
             return item
 
-        raise Exceptions.LookUpError("Can not find the item.", item)
+        raise LookUpError("Can not find the item.", item)
 
     def first_or_default(self, predicate=lambda n: n):
         for item in self.get_from_predicates():
@@ -73,10 +75,10 @@ class PyQuery:
         if item is not None:
             return item
 
-        raise Exceptions.LookUpError("Can not find the item.", item)
+        raise LookUpError("Can not find the item.", item)
 
     def skip(self, number):
-        self.__skip = number
+        self.__skip += number
         return self
 
     def take(self, number):
