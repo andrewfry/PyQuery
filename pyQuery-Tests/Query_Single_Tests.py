@@ -1,10 +1,11 @@
 import unittest
 from TestObject import TestObject
-from pyQuery.PyQuery import PyQuery
+from PyQuery.PyQuery import PyQuery
+
 
 class Query_Single_Tests(unittest.TestCase):
     def setUp(self):
-        self.test_data_primitives = [1,2,2,4,5,6,7,8]
+        self.test_data_primitives = [1, 2, 2, 4, 5, 6, 7, 8]
         self.test_data_objects = []
 
         self.test_data_first_object = TestObject("Fry", "Value", 1)
@@ -28,7 +29,8 @@ class Query_Single_Tests(unittest.TestCase):
 
     def test_single_primitive_lambda(self):
         single_return = PyQuery(self.test_data_primitives).single(lambda n: n == 4)
-        self.assertEqual(3, single_return)
+        self.assertEqual(4, single_return)
+
 
 if __name__ == '__main__':
     unittest.main()

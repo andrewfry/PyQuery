@@ -1,10 +1,11 @@
 import unittest
 from TestObject import TestObject
-from pyQuery.PyQuery import PyQuery
+from PyQuery.PyQuery import PyQuery
+
 
 class Query_Where_Tests(unittest.TestCase):
     def setUp(self):
-        self.test_data_primitives = [1,2,2,4,5,6,7,8]
+        self.test_data_primitives = [1, 2, 2, 4, 5, 6, 7, 8, 9, 10]
         self.test_data_objects = []
 
         self.test_data_first_object = TestObject("Fry", "Value", 1)
@@ -26,6 +27,11 @@ class Query_Where_Tests(unittest.TestCase):
         test_list = PyQuery(test_list).where(lambda n: n == 19999).single()
 
         self.assertEqual(test_list, 19999)
+
+    def test_chained_where_statements(self):
+        test_list = PyQuery(self.test_data_primitives).where(lambda n: n > 2).where(lambda n: n < 6).to_list()
+
+        self.assertEqual(len(test_list), 2)
 
 
 if __name__ == '__main__':

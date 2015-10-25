@@ -1,6 +1,6 @@
 import unittest
 from TestObject import TestObject
-from pyQuery.PyQuery import PyQuery
+from PyQuery.PyQuery import PyQuery
 
 class Query_First_Tests(unittest.TestCase):
     def setUp(self):
