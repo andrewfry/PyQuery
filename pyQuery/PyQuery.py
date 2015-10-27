@@ -2,12 +2,18 @@ from Exceptions import SequenceError
 from Exceptions import LookUpError
 
 
-class PyQuery:
+class PyQuery (object):
     def __init__(self, data_set):
         self.__data_set = data_set
         self.__predicates = []
         self.__skip = 0
         self.__take = None
+
+    def __repr__(self):
+        return self.to_list()
+
+    def __str__(self):
+        return self.to_list()
 
     def where(self, predicate):
         self.__predicates.append(predicate)

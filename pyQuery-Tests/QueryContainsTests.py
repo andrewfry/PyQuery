@@ -3,7 +3,7 @@ from TestObject import TestObject
 from PyQuery.PyQuery import PyQuery
 
 
-class Query_Contains_Tests(unittest.TestCase):
+class QueryContainsTests(unittest.TestCase):
     def setUp(self):
         self.test_data_primitives = [1, 2, 2, 4, 5, 6, 7, 8, 9, 10]
         self.test_data_objects = []
@@ -17,12 +17,12 @@ class Query_Contains_Tests(unittest.TestCase):
     def test_contains_primitive(self):
         result = PyQuery(self.test_data_primitives).contains(2)
 
-        self.assertEqual(result, True)
+        self.assertTrue(result is True)
 
     def test_contains_primitive_false(self):
         result = PyQuery(self.test_data_primitives).contains(156)
 
-        self.assertEqual(result, False)
+        self.assertTrue(result is False)
 
     # TODO investigate this error
     def test_contains_objects(self):
@@ -30,12 +30,12 @@ class Query_Contains_Tests(unittest.TestCase):
 
         result = PyQuery(self.test_contains_objects).contains(self.test_data_first_object)
 
-        self.assertEqual(result, True)
+        self.assertTrue(result is True)
 
     def test_contains_objects_false(self):
         result = PyQuery(self.test_contains_objects).skip(1).contains(self.test_data_first_object)
 
-        self.assertEqual(result, False)
+        self.assertTrue(result is False)
 
 
 if __name__ == '__main__':

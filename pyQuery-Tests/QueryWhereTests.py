@@ -3,7 +3,7 @@ from TestObject import TestObject
 from PyQuery.PyQuery import PyQuery
 
 
-class Query_Where_Tests(unittest.TestCase):
+class QueryWhereTests(unittest.TestCase):
     def setUp(self):
         self.test_data_primitives = [1, 2, 2, 4, 5, 6, 7, 8, 9, 10]
         self.test_data_objects = []
@@ -16,7 +16,7 @@ class Query_Where_Tests(unittest.TestCase):
 
     def test_where_single(self):
         result = PyQuery(self.test_data_primitives).where(lambda n: n == 6).single()
-        self.assertEqual(result, 6)
+        self.assertTrue(result == 6)
 
     def test_large_list_where(self):
         test_list = []
@@ -26,12 +26,12 @@ class Query_Where_Tests(unittest.TestCase):
 
         test_list = PyQuery(test_list).where(lambda n: n == 19999).single()
 
-        self.assertEqual(test_list, 19999)
+        self.assertTrue(test_list == 19999)
 
     def test_chained_where_statements(self):
         test_list = PyQuery(self.test_data_primitives).where(lambda n: n > 2).where(lambda n: n < 6).to_list()
 
-        self.assertEqual(len(test_list), 2)
+        self.assertTrue(len(test_list) == 2)
 
 
 if __name__ == '__main__':
