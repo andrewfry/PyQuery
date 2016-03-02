@@ -35,15 +35,14 @@ class PyQuery (object):
 
     def single_or_default(self, predicate=lambda n: n):
         return_item = None
-        count = 0
+        found = False
 
         for item in self.get_from_predicates(True):
             if predicate(item):
-                count += 1
+                if found:
+                    raise SequenceError("The item exists more than one in the query.", item)      
+                found = True
                 return_item = item
-
-        if count > 1:
-            raise SequenceError("The item exists more than one in the query.", item)
 
         return return_item
 
